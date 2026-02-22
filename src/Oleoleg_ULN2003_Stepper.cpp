@@ -5,9 +5,9 @@
   Date:  February 2026
 */
 
-#include "Bonezegei_ULN2003_Stepper.h"
+#include "Oleoleg_ULN2003_Stepper.h"
 
-Bonezegei_ULN2003_Stepper::Bonezegei_ULN2003_Stepper(int in1, int in2, int in3, int in4) {
+Oleoleg_ULN2003_Stepper::Oleoleg_ULN2003_Stepper(int in1, int in2, int in3, int in4) {
   _in1 = in1;
   _in2 = in2;
   _in3 = in3;
@@ -16,7 +16,7 @@ Bonezegei_ULN2003_Stepper::Bonezegei_ULN2003_Stepper(int in1, int in2, int in3, 
   _mode = MODE_FULL_STEP;
 }
 
-bool Bonezegei_ULN2003_Stepper::begin() {
+bool Oleoleg_ULN2003_Stepper::begin() {
   pinMode(_in1, OUTPUT);
   pinMode(_in2, OUTPUT);
   pinMode(_in3, OUTPUT);
@@ -24,11 +24,11 @@ bool Bonezegei_ULN2003_Stepper::begin() {
   return 1;
 }
 
-void Bonezegei_ULN2003_Stepper::setSpeed(int speed) {
+void Oleoleg_ULN2003_Stepper::setSpeed(int speed) {
   _speed = speed;
 }
 
-void Bonezegei_ULN2003_Stepper::step(int dir, int steps) {
+void Oleoleg_ULN2003_Stepper::step(int dir, int steps) {
   isBusy = true;     
   currentDir = dir;   // Remember the direction (1 or 0)
 
@@ -129,7 +129,7 @@ void Bonezegei_ULN2003_Stepper::step(int dir, int steps) {
 	_releaseCoils();
 }
 
-void Bonezegei_ULN2003_Stepper::stepAngle(int dir, float angle){
+void Oleoleg_ULN2003_Stepper::stepAngle(int dir, float angle){
   int stp=0;
   if(_mode == MODE_FULL_STEP){
     stp= (int) (angle * 5.68);
@@ -137,7 +137,7 @@ void Bonezegei_ULN2003_Stepper::stepAngle(int dir, float angle){
   }
 }  
   
-void Bonezegei_ULN2003_Stepper::_releaseCoils() {
+void Oleoleg_ULN2003_Stepper::_releaseCoils() {
     digitalWrite(_in1, LOW);
     digitalWrite(_in2, LOW);
     digitalWrite(_in3, LOW);
