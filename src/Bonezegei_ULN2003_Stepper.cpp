@@ -1,7 +1,8 @@
 /*
   This Library is written for Stepper Motor that uses ULN2003
   Author: Bonezegei (Jofel Batutay)
-  Date:  March 2024
+  Editor:  Oleoleg (Oleg Shiryaev)
+  Date:  February 2026
 */
 
 #include "Bonezegei_ULN2003_Stepper.h"
@@ -28,6 +29,9 @@ void Bonezegei_ULN2003_Stepper::setSpeed(int speed) {
 }
 
 void Bonezegei_ULN2003_Stepper::step(int dir, int steps) {
+  isBusy = true;     
+  currentDir = dir;   // Remember the direction (1 or 0)
+
   int cnt = 0;
 
   //FULL Step
@@ -36,6 +40,12 @@ void Bonezegei_ULN2003_Stepper::step(int dir, int steps) {
     //Direction FOrward
     if (dir) {
       for (int a = 0; a < steps; a++) {
+		  
+		if (stopFlag) {
+			_releaseCoils();
+			return;
+		}
+		 
         if (cnt == 0) {
           digitalWrite(_in1, HIGH);
           digitalWrite(_in2, HIGH);
@@ -72,6 +82,12 @@ void Bonezegei_ULN2003_Stepper::step(int dir, int steps) {
       }
     } else {
       for (int a = 0; a < steps; a++) {
+		  
+		if (stopFlag) {
+			_releaseCoils();
+			return;
+		}
+		  
         if (cnt == 0) {
           digitalWrite(_in1, HIGH);
           digitalWrite(_in2, LOW);
@@ -110,17 +126,22 @@ void Bonezegei_ULN2003_Stepper::step(int dir, int steps) {
   } else {
   }
 
-  digitalWrite(_in1, LOW);
-  digitalWrite(_in2, LOW);
-  digitalWrite(_in3, LOW);
-  digitalWrite(_in4, LOW);
+	_releaseCoils();
 }
 
-void Bonezegei_ULN2003_Stepper::stepAngle(int dir, int angle){
+void Bonezegei_ULN2003_Stepper::stepAngle(int dir, float angle){
   int stp=0;
   if(_mode == MODE_FULL_STEP){
-    stp= (angle/5.625);
+    stp= (int) (angle * 5.68);
     step(dir, stp);
   }
+}  
   
+void Bonezegei_ULN2003_Stepper::_releaseCoils() {
+    digitalWrite(_in1, LOW);
+    digitalWrite(_in2, LOW);
+    digitalWrite(_in3, LOW);
+    digitalWrite(_in4, LOW);
+	isBusy = false;
+	currentDir = -1; // Reset direction when stopped
 }
