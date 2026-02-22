@@ -4,20 +4,20 @@
   Editor:  Oleoleg (Oleg Shiryaev)
   Date:  February 2026
 */
-#ifndef _BONEZEGEI_ULN2003_STEPPER_H_
-#define _BONEZEGEI_ULN2003_STEPPER_H_
+#ifndef _OLEOLEG_ULN2003_STEPPER_H_
+#define _OLEOLEG_ULN2003_STEPPER_H_
 #include <Arduino.h>
 
 #define MODE_FULL_STEP 0
 #define MODE_HALF_STEP 1
 
-class Bonezegei_ULN2003_Stepper {
+class Oleoleg_ULN2003_Stepper {
 public:
   //Param1 Input 1
   //Param1 Input 2
   //Param1 Input 3
   //Param1 Input 4
-  Bonezegei_ULN2003_Stepper(int in1, int in2, int in3, int in4);
+  Oleoleg_ULN2003_Stepper(int in1, int in2, int in3, int in4);
 
   //Initialize Pins
   bool begin();
