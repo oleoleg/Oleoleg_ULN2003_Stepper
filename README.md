@@ -1,4 +1,4 @@
-# Bonezegei_ULN2003_Stepper
+# Oleoleg_ULN2003_Stepper
 ULN 2003 to Control Stepper Motor (28BYJ-48)
 Improved: Added emergency stop code; corrected rotation angle algorithm (in degrees); stop-flag.
 
