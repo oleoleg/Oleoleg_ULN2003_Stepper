@@ -1,5 +1,6 @@
 # Bonezegei_ULN2003_Stepper
 ULN 2003 to Control Stepper Motor (28BYJ-48)
+Improved: Added stop code; corrected rotation angle algorithm (in degrees), etc.
 
 <h4>Disclaimer</h4>
-<p>The code and libraries provided by Bonezegei is intended for informational and educational purposes only. Bonezegei does not own or manufacture the hardware associated with the code. The code is provided "as is" without any warranty, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose, and non-infringement. In no event shall Bonezegei be liable for any claim, damages, or other liability arising from the use of the code or the hardware. Users are solely responsible for ensuring that their use of the code complies with all applicable laws and regulations.</p>
+<p>Код и библиотеки, предоставленные Oleoleg является улучшенной версией Bonezegei, предназначены исключительно для информационных и образовательных целей. Oleoleg не владеет и не производит оборудование, связанное с кодом. Код предоставляется «как есть» без каких-либо гарантий, явных или подразумеваемых, включая, помимо прочего, гарантии товарной пригодности, пригодности для определенной цели и отсутствия нарушений прав. Ни при каких обстоятельствах Oleoleg не несет ответственности за любые претензии, убытки или иную ответственность, возникающие в результате использования кода или оборудования. Пользователи несут единоличную ответственность за обеспечение соответствия использования кода всем применимым законам и нормативным актам.</p>
