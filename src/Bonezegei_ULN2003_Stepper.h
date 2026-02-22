@@ -1,7 +1,8 @@
 /*
   This Library is written for Stepper Motor that uses ULN2003
   Author: Bonezegei (Jofel Batutay)
-  Date:  March 2024
+  Editor:  Oleoleg (Oleg Shiryaev)
+  Date:  February 2026
 */
 #ifndef _BONEZEGEI_ULN2003_STEPPER_H_
 #define _BONEZEGEI_ULN2003_STEPPER_H_
@@ -30,7 +31,7 @@ public:
   void step(int dir, int steps);
 
   // step by angle for initial points
-  void stepAngle(int dir, int angle);
+  void stepAngle(int dir, float angle);
 
   //Variables
   uint8_t _in1;          // Input 1
@@ -40,6 +41,16 @@ public:
   uint8_t _dir;          // Direction
   uint8_t _mode;         // Full Step or Half Step
   unsigned long _speed;  //Speed
+  
+  volatile bool isBusy = false;    // Is the motor busy?
+  volatile int currentDir = -1;    // Current direction (-1 - stop, 1 - forward, 0 - backward)
+  volatile bool stopFlag = false; // Adding a stop flag
+  void resumeStepper() { stopFlag = false; } // Method to clear the stop flag
+  
+  
+  private:  
+    void _releaseCoils(); // Declaring a voltage reduction function
+	
 };
 
 #endif
